@@ -74,7 +74,7 @@ class FortiOS < Oxidized::Model
 
     cfg << cmd('end') if @vdom_enabled
 
-    ['show | grep .', 'show full-configuration', 'show'].each do |fullcmd|
+    ['show full-configuration'].each do |fullcmd|
       fullcfg = cmd(fullcmd)
       next if fullcfg.lines[1..3].join =~ /(Parsing error at|command parse error)/ # Don't show for unsupported devices (e.g. FortiAnalyzer, FortiManager, FortiMail)
 
